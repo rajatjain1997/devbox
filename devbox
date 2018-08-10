@@ -16,6 +16,8 @@ elif [[ $1 == "list" ]]; then
     echo "${check}" | grep -e 'devbox'
 elif [[ $1 == "ip" ]]; then
     docker inspect $2 | grep "\"IPAddress\"" -m 1 | awk '{print $2}' | cut -d"," -f 1
+elif [[ $1 == "install" ]]; then
+    docker pull rajatjain1997/devbox
 else
     echo "
 devbox [COMMAND] {name}
@@ -29,6 +31,8 @@ Following folders are used by each devbox:
 /spare/bin: Manually installed binaries that are present in PATH of all devboxes
 
 COMMANDS:
+install: Install devbox image
+
 create: Create a new devbox
 
 start: Start an already existing devbox
