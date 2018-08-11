@@ -13,9 +13,7 @@ elif [[ $1 == "rm" ]]; then
 elif [[ $1 == "attach" ]]; then
     docker exec -it $2 /bin/bash
 elif [[ $1 == "list" ]]; then
-    check=`docker ps -a`
-    echo "${check}" | grep -e 'IMAGE'
-    echo "${check}" | grep -e 'devbox'
+    sudo docker ps --filter ancestor=devbox --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Size}}" -a
 elif [[ $1 == "install" ]]; then
     docker pull rajatjain1997/devbox
 elif [[ $1 == "cp" ]]; then
