@@ -1,7 +1,9 @@
 #!/bin/bash
 
 if [[ $1 == "create" ]]; then
-    docker run -itd -v /spare:/spare --name=$2 devbox /bin/bash &>/dev/null && echo "$2 has been successfully created" || echo "$2 could not be created"
+    XAUTH=$HOME/.Xauthority
+    touch $XAUTH
+    docker run -itd --network=host --env DISPLAY=$DISPLAY -v /spare:/spare -v $XAUTH:/root/.Xauthority --name=$2 devbox /bin/bash &>/dev/null && echo "$2 has been successfully created" || echo "$2 could not be created"
 elif [[ $1 == "stop" ]]; then
     docker stop $2 &>/dev/null && echo "$2 has been stopped" || echo "$2 could not be stopped"
 elif [[ $1 == "start" ]]; then
@@ -14,8 +16,6 @@ elif [[ $1 == "list" ]]; then
     check=`docker ps -a`
     echo "${check}" | grep -e 'IMAGE'
     echo "${check}" | grep -e 'devbox'
-elif [[ $1 == "ip" ]]; then
-    docker inspect $2 | grep "\"IPAddress\"" -m 1 | awk '{print $2}' | cut -d"," -f 1
 elif [[ $1 == "install" ]]; then
     docker pull rajatjain1997/devbox
 elif [[ $1 == "cp" ]]; then
