@@ -8,6 +8,8 @@ elif [[ $1 == "stop" ]]; then
     docker stop $2 &>/dev/null && echo "$2 has been stopped" || echo "$2 could not be stopped"
 elif [[ $1 == "start" ]]; then
     docker start $2 &>/dev/null &&  echo "$2 has been started" || echo "$2 could not be started"
+elif [[ $1 == "restart" ]]; then
+    docker restart $2 &>/dev/null &&  echo "$2 has been restarted" || echo "$2 could not be restarted"
 elif [[ $1 == "rm" ]]; then
     docker rm -f $2 &>/dev/null && echo "$2 has been removed" || echo "$2 could not be removed"
 elif [[ $1 == "attach" ]]; then
@@ -39,13 +41,13 @@ start: Start an already existing devbox
 
 stop: Stop a running devbox
 
+restart: Restart a devbox
+
 rm: Remove a devbox
 
 attach: Attach to the bash of a running devbox instance
 
 list: List all devboxes
-
-ip: Gives the ip address of the devbox
 
 cp <devbox name> SRC DEST: Copies files into the devbox from SRC to DEST
 "
