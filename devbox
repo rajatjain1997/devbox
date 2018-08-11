@@ -18,6 +18,8 @@ elif [[ $1 == "ip" ]]; then
     docker inspect $2 | grep "\"IPAddress\"" -m 1 | awk '{print $2}' | cut -d"," -f 1
 elif [[ $1 == "install" ]]; then
     docker pull rajatjain1997/devbox
+elif [[ $1 == "cp" ]]; then
+    docker cp $3 $2:$4 
 else
     echo "
 devbox [COMMAND] {name}
@@ -46,5 +48,7 @@ attach: Attach to the bash of a running devbox instance
 list: List all devboxes
 
 ip: Gives the ip address of the devbox
+
+cp <devbox name> SRC DEST: Copies files into the devbox from SRC to DEST
 "
 fi
