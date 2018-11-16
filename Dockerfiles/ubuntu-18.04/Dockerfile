@@ -7,10 +7,10 @@ RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.
 
 WORKDIR spare
 
-COPY * /spare/profile/
+COPY * /spare/.devbox/
 
 ENV TERM=xterm-256color
 
-RUN echo "source /spare/profile/profile" >> /root/.bashrc
+RUN echo "source /spare/.devbox/.bashprofile" >> /root/.bashrc
 
 CMD ["/bin/bash"]

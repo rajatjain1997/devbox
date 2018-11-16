@@ -29,7 +29,7 @@ Manages devboxes on the machine. All system files on devboxes are isolated from 
 
 Following folders are used by each devbox:
 
-/spare/profile: Bash profile that is loaded in the devbox bash
+/spare/.devbox: Bash profile that is loaded in the devbox bash
 /spare/packages: Common packages can be added here for ease of maintainence
 /spare/bin: Manually installed binaries that are present in PATH of all devboxes
 
