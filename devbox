@@ -18,7 +18,8 @@ elif [[ $1 == "attach" ]]; then
 elif [[ $1 == "list" ]]; then
     docker ps --filter ancestor=devbox --format "table {{.Names}}\t{{.Status}}\t{{.Size}}" -a
 elif [[ $1 == "install" ]]; then
-    docker pull rajatjain1997/devbox
+    tag=${2:- "latest"}
+    docker pull rajatjain1997/devbox:$tag
 elif [[ $1 == "cp" ]]; then
     docker cp $3 $2:$4 
 else
