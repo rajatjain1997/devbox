@@ -11,3 +11,8 @@ fi
 . /spare/packages/miniconda3/etc/profile.d/conda.sh
 
 export PATH="/spare/bin:$PATH"
+export EDITOR="code"
+export HOME=${HOME:-/home/$(whoami)}
+
+alias google="googler -n 7 -c in"
+alias browse="browsh --startup-url"

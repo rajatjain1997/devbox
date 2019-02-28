@@ -10,9 +10,9 @@ Isolated Ubuntu Bionic based development environment.
 
 1. Install devbox by running the following command:
 
-        wget -q0- "https://raw.githubusercontent.com/rajatjain1997/devbox/master/install.sh" | bash
+        sudo wget -q0- "https://raw.githubusercontent.com/rajatjain1997/devbox/master/install.sh" | bash
 
-3. Restart your bash and follow instructions for miniconda installation.
-4. Install devbox by running:
+2. Restart your bash and follow instructions for miniconda installation.
+3. Install devbox by running:
 
         sudo devbox install
